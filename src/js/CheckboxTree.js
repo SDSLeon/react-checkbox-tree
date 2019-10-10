@@ -248,6 +248,7 @@ class CheckboxTree extends React.Component {
                     isParent={flatNode.isParent}
                     showCheckbox={showCheckbox}
                     showNodeIcon={showNodeIcon}
+                    noCascade={node.noCascade}
                     title={showNodeTitle ? node.title || node.label : node.title}
                     treeId={id}
                     value={node.value}

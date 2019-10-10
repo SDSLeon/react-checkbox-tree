@@ -10,7 +10,7 @@ import languageShape from './shapes/languageShape';
 class TreeNode extends React.Component {
     static propTypes = {
         checked: PropTypes.number.isRequired,
-        noCascade: PropTypes.number,
+        noCascade: PropTypes.number.isRequired,
         disabled: PropTypes.bool.isRequired,
         expandDisabled: PropTypes.bool.isRequired,
         expanded: PropTypes.bool.isRequired,
@@ -41,7 +41,6 @@ class TreeNode extends React.Component {
         children: null,
         className: null,
         expandOnClick: false,
-        noCascade: false,
         icon: null,
         showCheckbox: true,
         title: null,
