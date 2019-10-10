@@ -10,6 +10,7 @@ import languageShape from './shapes/languageShape';
 class TreeNode extends React.Component {
     static propTypes = {
         checked: PropTypes.number.isRequired,
+        noCascade: PropTypes.number,
         disabled: PropTypes.bool.isRequired,
         expandDisabled: PropTypes.bool.isRequired,
         expanded: PropTypes.bool.isRequired,
@@ -27,7 +28,6 @@ class TreeNode extends React.Component {
         ]).isRequired,
         onCheck: PropTypes.func.isRequired,
         onExpand: PropTypes.func.isRequired,
-
         children: PropTypes.node,
         className: PropTypes.string,
         expandOnClick: PropTypes.bool,
@@ -41,6 +41,7 @@ class TreeNode extends React.Component {
         children: null,
         className: null,
         expandOnClick: false,
+        noCascade: false,
         icon: null,
         showCheckbox: true,
         title: null,
@@ -56,9 +57,9 @@ class TreeNode extends React.Component {
     }
 
     onCheck() {
-        const { value, onCheck } = this.props;
+        const { value, onCheck, noCascade } = this.props;
 
-        onCheck({ value, checked: this.getCheckState({ toggle: true }) });
+        onCheck({ value, checked: this.getCheckState({ toggle: true }), noCascade });
     }
 
     onClick() {
