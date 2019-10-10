@@ -29,7 +29,7 @@ class NodeModel {
             return;
         }
 
-        const { disabled, noCascade, readOnly } = this.props;
+        const { disabled, noCascade } = this.props;
 
         // Flatten the `node` property for internal lookups
         nodes.forEach((node, index) => {
@@ -43,7 +43,7 @@ class NodeModel {
                 isParent,
                 isLeaf: !isParent,
                 showCheckbox: node.showCheckbox !== undefined ? node.showCheckbox : true,
-                disabled: this.getDisabledState(node, parent, disabled || readOnly, noCascade),
+                disabled: this.getDisabledState(node, parent, disabled, noCascade),
                 treeDepth: depth,
                 index,
             };
@@ -64,7 +64,7 @@ class NodeModel {
             return true;
         }
 
-        return Boolean(node.disabled);
+        return Boolean(node.disabled || node.readOnly);
     }
 
     deserializeLists(lists) {
