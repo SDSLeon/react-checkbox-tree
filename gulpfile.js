@@ -8,7 +8,7 @@ const header = require('gulp-header');
 const less = require('gulp-less');
 const mocha = require('gulp-mocha');
 const sass = require('gulp-sass');
-const scsslint = require('gulp-scss-lint');
+// const scsslint = require('gulp-scss-lint');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 
@@ -59,13 +59,13 @@ gulp.task('build-script-web', gulp.series('build-script', () => (
 
 gulp.task('build-style', () => (
     gulp.src('./src/scss/**/*.scss')
-        .pipe(scsslint())
-        .pipe(scsslint.failReporter())
+        // .pipe(scsslint())
+        // .pipe(scsslint.failReporter())
         .pipe(sass({
             outputStyle: 'expanded',
         }).on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
         }))
         .pipe(gulp.dest('./lib'))
         .pipe(cleanCss())
@@ -76,7 +76,7 @@ gulp.task('build-style-less', () => (
     gulp.src('./src/less/**/*.less')
         .pipe(less())
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
         }))
         .pipe(cleanCss())
         .pipe(gulp.dest('./.css-compare/less'))
@@ -98,13 +98,13 @@ function buildExamplesScript(mode = 'development') {
 
 function buildExamplesStyle(minifyStyles = false) {
     let stream = gulp.src('./examples/src/scss/**/*.scss')
-        .pipe(scsslint())
-        .pipe(scsslint.failReporter())
+        // .pipe(scsslint())
+        // .pipe(scsslint.failReporter())
         .pipe(sass({
             outputStyle: 'expanded',
         }).on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
         }));
 
     if (minifyStyles) {
