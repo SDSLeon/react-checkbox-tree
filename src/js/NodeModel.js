@@ -109,12 +109,10 @@ class NodeModel {
         return this;
     }
 
-    toggleChecked(node, isChecked, noCascade, parent) {
+    toggleChecked(node, isChecked, noCascade) {
         const flatNode = this.flatNodes[node.value];
 
-        console.info(node, flatNode, parent);
-
-        if ((node.noCascade && !isChecked) || flatNode.isLeaf || noCascade) {
+        if ((node.noCascade && isChecked) || flatNode.isLeaf || noCascade) {
             if (node.disabled) {
                 return this;
             }
