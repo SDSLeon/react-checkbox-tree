@@ -109,10 +109,10 @@ class NodeModel {
         return this;
     }
 
-    toggleChecked(node, isChecked, noCascade) {
+    toggleChecked(parent, node, isChecked, noCascade) {
         const flatNode = this.flatNodes[node.value];
 
-        if (flatNode.isLeaf || noCascade) {
+        if ((node.noCascade && !isChecked) || flatNode.isLeaf || noCascade) {
             if (node.disabled) {
                 return this;
             }
@@ -122,7 +122,7 @@ class NodeModel {
         } else {
             // Percolate check status down to all children
             flatNode.children.forEach((child) => {
-                this.toggleChecked(child, isChecked, noCascade);
+                this.toggleChecked(flatNode, child, isChecked, noCascade);
             });
         }
 
