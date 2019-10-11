@@ -111,6 +111,7 @@ class NodeModel {
 
     toggleChecked(node, isChecked, noCascade) {
         const flatNode = this.flatNodes[node.value];
+        const parent = this.flatNodes[flatNode.parent.value];
 
         if (flatNode.isLeaf || noCascade) {
             if (node.disabled) {
@@ -133,6 +134,10 @@ class NodeModel {
             flatNode.children.forEach((child) => {
                 this.toggleChecked(child, isChecked, noCascade, node);
             });
+        }
+
+        if (flatNode.parent.noCascade && isChecked && !parent.checked) {
+            this.toggleNode(parent.value, 'checked', isChecked);
         }
 
         return this;
