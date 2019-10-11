@@ -172,7 +172,6 @@ class CheckboxTree extends React.Component {
         const flatNode = this.state.model.getNode(node.value);
 
         if (node.noCascade) {
-            console.info(flatNode);
             return flatNode.checked ? 1 : 0;
         }
 

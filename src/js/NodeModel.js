@@ -117,13 +117,9 @@ class NodeModel {
                 return this;
             }
 
-            console.info('toggleNode', node, isChecked);
-
             // Set the check status of a leaf node or an uncoupled parent
             this.toggleNode(node.value, 'checked', isChecked);
         } else if (node.noCascade) {
-            console.info('cascade', node, isChecked);
-
             this.toggleNode(node.value, 'checked', isChecked);
 
             if (!isChecked) {
@@ -133,8 +129,6 @@ class NodeModel {
             }
         } else {
             // Percolate check status down to all children
-
-            console.info('children', flatNode);
 
             flatNode.children.forEach((child) => {
                 this.toggleChecked(child, isChecked, noCascade, node);
