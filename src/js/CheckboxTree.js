@@ -129,7 +129,7 @@ class CheckboxTree extends React.Component {
         const model = this.state.model.clone();
         const node = model.getNode(nodeInfo.value);
 
-        model.toggleChecked({ ...node, ...nodeInfo }, nodeInfo.checked, noCascade);
+        model.toggleChecked(nodeInfo, nodeInfo.checked, noCascade);
         onCheck(model.serializeList('checked'), { ...node, ...nodeInfo });
     }
 
@@ -170,6 +170,11 @@ class CheckboxTree extends React.Component {
 
     determineShallowCheckState(node, noCascade) {
         const flatNode = this.state.model.getNode(node.value);
+
+        if (node.noCascade) {
+            console.info(flatNode);
+            return flatNode.checked ? 1 : 0;
+        }
 
         if (flatNode.isLeaf || noCascade) {
             return flatNode.checked ? 1 : 0;

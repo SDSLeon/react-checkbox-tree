@@ -9,6 +9,7 @@ const nodes = [
             {
                 value: '/app/Http',
                 label: 'Http',
+                noCascade: true,
                 children: [
                     {
                         value: '/app/Http/Controllers',
@@ -83,6 +84,7 @@ const nodes = [
 class BasicExample extends React.Component {
     state = {
         checked: [
+            '/app/Http',
             '/app/Http/Controllers/WelcomeController.js',
             '/app/Http/routes.js',
             '/public/assets/style.css',
