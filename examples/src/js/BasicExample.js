@@ -14,6 +14,7 @@ const nodes = [
                     {
                         value: '/app/Http/Controllers',
                         label: 'Controllers',
+                        noCascade: true,
                         children: [{
                             value: '/app/Http/Controllers/WelcomeController.js',
                             label: 'WelcomeController.js',
@@ -85,6 +86,7 @@ class BasicExample extends React.Component {
     state = {
         checked: [
             '/app/Http',
+            '/app/Http/Controllers',
             '/app/Http/Controllers/WelcomeController.js',
             '/app/Http/routes.js',
             '/public/assets/style.css',

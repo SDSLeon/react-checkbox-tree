@@ -137,7 +137,7 @@ class NodeModel {
         }
 
         if (flatNode.parent.noCascade && isChecked && !parent.checked) {
-            this.toggleNode(parent.value, 'checked', isChecked);
+            this.toggleChecked(parent, isChecked, flatNode.parent.noCascade);
         }
 
         return this;
