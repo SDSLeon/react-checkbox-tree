@@ -10,6 +10,9 @@ declare module "react-checkbox-tree" {
         icon?: React.ReactNode;
         showCheckbox?: boolean;
         title?: string;
+        parent?: {
+            [key : string] : any
+        }
     }
 
     interface Icons {
