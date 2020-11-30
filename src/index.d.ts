@@ -35,8 +35,8 @@ declare module "react-checkbox-tree" {
         nodes: Array<Node>;
         checked: Array<string>;
         expanded: Array<string>;
-        onCheck: (checked: Array<string>) => void;
-        onExpand: (expanded: Array<string>) => void;
+        onCheck: (checked: Array<string>, targetNode: Node) => void;
+        onExpand: (expanded: Array<string>, targetNode: Node) => void;
 
         disabled?: boolean;
         expandDisabled?: boolean;
